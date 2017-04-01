@@ -26,6 +26,24 @@ for i in range(10):
         print('Height : ' + str(resp[0]['faceRectangle']['height']))
         print('Width : ' + str(resp[0]['faceRectangle']['width']))
         print('Left : ' + str(resp[0]['faceRectangle']['left']))
+        top = resp[0]['faceRectangle']['top']
+        height = resp[0]['faceRectangle']['height']
+        width =resp[0]['faceRectangle']['width']
+        left = resp[0]['faceRectangle']['left']
+
+        centerX = left + (width / 2)
+        centerY = top + (height / 2)
+
+        diff_x = centerX - 1296
+        diff_y = centerY - 972
+
+        # Greater enough difference in X
+        if(float(diff_x) > 2592 * 0.05):
+            print("diff_x : " + str(diff_x) )
+            # Here we determine how much we need to correct
+        # Greater enough difference in Y
+        if(float(diff_y) > 1944 * 0.05):
+            print("diff_y : " + str(diff_y))
 camera.stop_preview()
 
 # key 1:548f653e1dbd46b8a687e581b8884ee0
