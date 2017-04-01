@@ -6,7 +6,7 @@ import json
 headers = {
         'Content-Type': 'application/octet-stream',
         'Host': 'westus.api.cognitive.microsoft.com',
-        'Ocp-Apim-Subscription-Key': '548f653e1dbd46b8a687e581b8884ee0'
+        'Ocp-Apim-Subscription-Key': ''
     }
 
 camera = PiCamera()
