@@ -57,7 +57,7 @@ void loop() {
       Serial.print("\r\n");
       Serial.print(y_offset);
       Serial.print("\r\n");
-      Ystepper.step((y_offset/8)*stepsPerRevolution);
+      Ystepper.step((x_offset/240)*stepsPerRevolution);
     }
     // clear the string:
     inputString = "";

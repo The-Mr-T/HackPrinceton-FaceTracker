@@ -13,7 +13,7 @@ headers = {
 
 # Serial port initialization. 
 ser = serial.Serial(
-    port='/dev/ttyACM0',
+    port='/dev/ttyACM1',
     baudrate = 9600,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
@@ -26,7 +26,7 @@ camera.start_preview()
 camera.preview.alpha = 128
 camera.resolution = ( 2592 , 1944 )
 
-for i in range(10):
+for i in range(20):
     sleep(2)
     path = '/home/pi/Desktop/pics/image' + str(i) + 's.jpg'
     camera.capture(path)
@@ -48,12 +48,12 @@ for i in range(10):
 
         diff_x = int(centerX - 1296)
         diff_y = int(centerY - 972)
-
+        
         # Greater enough difference in X
         if(float(diff_x) > 2592 * 0.05):
             print("diff_x : " + str(diff_x) )
             # Here we determine how much we need to correct
-        # Greater enough difference in Y
+         #Greater enough difference in Y
         if(float(diff_y) > 1944 * 0.05):
             print("diff_y : " + str(diff_y))
         coords = {'X': diff_x, 'Y' : diff_y}
