@@ -26,12 +26,37 @@ void setup() {
   // initialize the serial port:
   inputString.reserve(200);
 }
+//
+// Step 1: Reserve memory space
+//
+StaticJsonBuffer<200> jsonBuffer;
+
 
 void loop() {
 
   Xstepper.step(1*stepsPerRevolution); delay(1000);
   if (stringComplete) {
-    Serial.print(inputString);
+    //Serial.print(inputString);
+    unsigned char buff[30];
+    inputString.getBytes(buff, 30);
+    //
+    // Step 2: Deserialize the JSON string
+    //
+    JsonObject& root = jsonBuffer.parseObject(buff);
+
+    if (!root.success())
+    {
+      Serial.println("parseObject() failed");
+    }
+    else
+    {
+      int x_offset = root["X"];
+      int y_offset = root["Y"];
+      Serial.print(x_offset);
+      Serial.print("\r\n");
+      Serial.print(y_offset);
+      Serial.print("\r\n");
+    }
     // clear the string:
     inputString = "";
     stringComplete = false;
