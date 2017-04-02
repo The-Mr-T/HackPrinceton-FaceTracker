@@ -34,7 +34,7 @@ StaticJsonBuffer<200> jsonBuffer;
 
 void loop() {
 
-  Xstepper.step(1*stepsPerRevolution); delay(1000);
+  //Xstepper.step(1*stepsPerRevolution); delay(1000);
   if (stringComplete) {
     //Serial.print(inputString);
     unsigned char buff[30];
@@ -57,6 +57,7 @@ void loop() {
       Serial.print("\r\n");
       Serial.print(y_offset);
       Serial.print("\r\n");
+      Ystepper.step((y_offset/8)*stepsPerRevolution);
     }
     // clear the string:
     inputString = "";
