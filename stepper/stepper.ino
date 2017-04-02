@@ -52,6 +52,7 @@ void loop() {
     {
       int x_offset = root["X"];
       int y_offset = root["Y"];
+      Serial.print("Received coordinates : \r\n");
       Serial.print(x_offset);
       Serial.print("\r\n");
       Serial.print(y_offset);
