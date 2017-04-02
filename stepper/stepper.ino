@@ -1,3 +1,5 @@
+#include <ArduinoJson.h>
+
 #include <Stepper.h>
 #include "include/ArduinoJson.h"
 
@@ -22,16 +24,14 @@ void setup() {
   Xstepper.setSpeed(120);
   Ystepper.setSpeed(120);
   // initialize the serial port:
-  Serial.begin(9600);
   inputString.reserve(200);
 }
 
 void loop() {
 
   Xstepper.step(1*stepsPerRevolution); delay(1000);
-  Serial.write("I am running !");
   if (stringComplete) {
-    Serial.println(inputString);
+    Serial.print(inputString);
     // clear the string:
     inputString = "";
     stringComplete = false;
